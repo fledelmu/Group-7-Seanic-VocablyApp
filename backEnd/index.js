@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import pkg from 'pg'; 
 import dotenv from 'dotenv';
 
+const app = express()
+const port = process.env.PORT || 10000;
 dotenv.config();
 
 const { Pool } = pkg;
@@ -20,3 +22,11 @@ const pool = new Pool({
 pool.connect()
   .then(() => console.log('Connected to PostgreSQL'))
   .catch(err => console.error('Connection error', err.stack));
+
+  app.get('/', (req, res) => {
+    res.send('Conneted')
+  })
+  
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+  })
