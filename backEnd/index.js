@@ -8,10 +8,12 @@ dotenv.config();
 
 const { Pool } = pkg;
 
-const connectionString = '${process.env.DATABASE_URL}:${process.env.DB_PORT}/studentdata_db'; 
-
 const pool = new Pool({
-  connectionString,
+  host: process.env.DB_HOST,         
+  port: process.env.DB_PORT || 5432, 
+  database: process.env.DB_DATABASE, 
+  user: process.env.DB_USERNAME,     
+  password: process.env.DB_PASSWORD,  
   ssl: { rejectUnauthorized: false }  
 });
 
