@@ -4,7 +4,9 @@ import bodyParser from 'body-parser';
 import pkg from 'pg'; 
 import dotenv from 'dotenv';
 
-const { Pool } = require('pg');
+dotenv.config();
+
+const { Pool } = pkg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
