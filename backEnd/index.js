@@ -20,41 +20,75 @@ const pool = new Pool({
 });
 
 pool.connect()
-  .then(() => console.log('Connected to PostgreSQL'))
-  .catch(err => console.error('Connection error', err.stack));
+    .then(() => console.log('Connected to PostgreSQL'))
+    .catch(err => console.error('Connection error', err.stack));
 
   app.get('/', (req, res) => {
-    res.send('Trying if the server is still up')
-  })
-  
-  app.post('/test-insert', async (req, res) => {
-    try {
-      const student_name = 'John Doe';
-      const student_score = 85;
-  
-      const result = await pool.query(
-        'INSERT INTO student_data_table (student_name, student_score) VALUES ($1, $2) RETURNING *',
-        [student_name, student_score]
-      );
-  
-      res.status(201).send(`Student added with ID: ${result.rows[0].student_id}`);
-    } catch (error) {
-      console.error('Error inserting student:', error);
-      res.status(500).send('Error inserting student');
-    }
+      res.send('Trying if the server is still up');
   });
 
-  app.get('/test-view', async (req, res) => {
-    try {
-      const result = await pool.query('SELECT * FROM student_data_table');
-      res.status(200).json(result.rows);
-    } catch (error) {
-      console.error('Error retrieving students:', error);
-      res.status(500).send('Error retrieving students');
-    }
+  app.post('/dev-insert', async (req, res) => {
+      try {
+          const student_name = 'John Doe';
+          const student_score = 85;
+
+          const result = await pool.query(
+              'INSERT INTO student_data_table (student_name, student_score) VALUES ($1, $2) RETURNING *',
+              [student_name, student_score]
+          );
+
+          res.status(201).send(`Student added with ID: ${result.rows[0].student_id}`);
+      } catch (error) {
+          console.error('Error inserting student:', error);
+          res.status(500).send('Error inserting student');
+      }
   });
 
+  app.get('/dev-view', async (req, res) => {
+      try {
+          const result = await pool.query('SELECT * FROM student_data_table');
+          res.status(200).json(result.rows);
+      } catch (error) {
+          console.error('Error retrieving students:', error);
+          res.status(500).send('Error retrieving students');
+      }
+  });
+
+  app.post('/dev-alter', async (req, res) => {
+      try {
+          await pool.query(`
+              ALTER TABLE student_data_table
+              DROP COLUMN IF EXISTS student_id;
+          `);
+
+          await pool.query(`
+              ALTER TABLE student_data_table
+              ADD COLUMN student_id SERIAL PRIMARY KEY;
+          `);
+
+          res.status(200).send('Student ID is now set to SERIAL (auto-increment).');
+      } catch (error) {
+          console.error('Error altering student ID:', error);
+          res.status(500).send('Error altering student ID');
+      }
+  });
+
+  app.delete('/dev-table-clear', async (req, res) => {
+      try {
+
+          const clearQuery = `
+              DELETE FROM student_data_table;
+          `;
+
+          await pool.query(clearQuery);
+
+          res.status(200).send('All student data has been cleared.');
+      } catch (error) {
+          console.error('Error clearing student data:', error);
+          res.status(500).send('Error clearing student data');
+      }
+  });
 
   app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
+      console.log(`Example app listening on port ${port}`);
+  });
