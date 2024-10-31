@@ -54,28 +54,9 @@ pool.connect()
       }
   });
 
-  app.post('/dev-alter', async (req, res) => {
-      try {
-          await pool.query(`
-              ALTER TABLE student_data_table
-              DROP COLUMN IF EXISTS student_id;
-          `);
-
-          await pool.query(`
-              ALTER TABLE student_data_table
-              ADD COLUMN student_id SERIAL PRIMARY KEY;
-          `);
-
-          res.status(200).send('Student ID is now set to SERIAL (auto-increment).');
-      } catch (error) {
-          console.error('Error altering student ID:', error);
-          res.status(500).send('Error altering student ID');
-      }
-  });
-
   app.delete('/dev-table-clear', async (req, res) => {
       try {
-        
+
        await pool.query(`
               DELETE FROM student_data_table;
           `);
