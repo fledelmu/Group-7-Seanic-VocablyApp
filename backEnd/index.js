@@ -75,12 +75,10 @@ pool.connect()
 
   app.delete('/dev-table-clear', async (req, res) => {
       try {
-
-          const clearQuery = `
+        
+       await pool.query(`
               DELETE FROM student_data_table;
-          `;
-
-          await pool.query(clearQuery);
+          `);
 
           res.status(200).send('All student data has been cleared.');
       } catch (error) {
