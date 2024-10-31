@@ -27,6 +27,34 @@ pool.connect()
     res.send('Trying if the server is still up')
   })
   
+  app.post('/test-insert', async (req, res) => {
+    try {
+      const student_name = 'John Doe';
+      const student_score = 85;
+  
+      const result = await pool.query(
+        'INSERT INTO student_data_table (student_name, student_score) VALUES ($1, $2) RETURNING *',
+        [student_name, student_score]
+      );
+  
+      res.status(201).send(`Student added with ID: ${result.rows[0].student_id}`);
+    } catch (error) {
+      console.error('Error inserting student:', error);
+      res.status(500).send('Error inserting student');
+    }
+  });
+
+  app.get('/test-view', async (req, res) => {
+    try {
+      const result = await pool.query('SELECT * FROM student_data_table');
+      res.status(200).json(result.rows);
+    } catch (error) {
+      console.error('Error retrieving students:', error);
+      res.status(500).send('Error retrieving students');
+    }
+  });
+
+
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
   })
