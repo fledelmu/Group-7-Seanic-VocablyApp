@@ -24,7 +24,7 @@ pool.connect()
   .catch(err => console.error('Connection error', err.stack));
 
   app.get('/', (req, res) => {
-    res.send('Conneted')
+    res.send('Trying if the server is still up')
   })
   
   app.listen(port, () => {
