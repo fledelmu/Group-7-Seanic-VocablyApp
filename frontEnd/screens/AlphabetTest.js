@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, Image, Button } from 'react-native';
+import { postStudentData } from '../api';
 import styles from './styles'
 
 // Alphabet Detail screen with swipe feature and check/wrong functionality
@@ -167,19 +168,23 @@ function AlphabetDetailScreen({ route, navigation }) {
   
     const [wordIndex, setWordIndex] = useState(0);
     const [wrongTries, setWrongTries] = useState(0);
-  
+
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
   
+    const [name, setName] = useState(''); // added variable for name
+    const [score, setScore] = useState(0); // added variable for score
+
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {
-        setWordIndex(wordIndex + 1);
-        setWrongTries(0); // Reset wrong tries for the new word
+        setWordIndex(prevIndex => prevIndex + 1);
+        setWrongTries(0);
       } else {
         // Move to the next letter if current letter's words are exhausted
         const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
         if (nextLetter <= 'Z'&& navigation) {
           navigation.navigate('Alphabet', { letter: nextLetter });
+          setScore(prevScore => prevScore + 1);
           setWordIndex(0);
         } else {
           console.log("You've completed the alphabet!");
@@ -190,17 +195,18 @@ function AlphabetDetailScreen({ route, navigation }) {
   
     const handleWrong = () => {
       if (wrongTries < 2) {
-        setWrongTries(wrongTries + 1);
+        setWrongTries(prevTries => prevTries + 1);
       } else {
         // After 3 wrong tries, move to the next word
         setWrongTries(0);
         if (wordIndex < words.length - 1) {
-          setWordIndex(wordIndex + 1);
+          setWordIndex(prevIndex => prevIndex + 1);
         } else {
           // Move to the next letter if current letter's words are exhausted
           const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
           if (nextLetter <= 'Z'&&navigation) {
             navigation.navigate('Alphabet', { letter: nextLetter });
+            setScore(prevScore => prevScore + 1);
             setWordIndex(0);
           } else {
             console.log("You've completed the alphabet!");
