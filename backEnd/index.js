@@ -27,6 +27,8 @@ pool.connect()
       res.send('Trying if the server is still up');
   });
 
+
+  // here
   app.post('/add-info/post-student-data', async (req, res) => {
       try {
           const student_name = 'John Doe';
@@ -44,6 +46,7 @@ pool.connect()
       }
   });
 
+  // this too
   app.get('/view-data/get-student-data', async (req, res) => {
       try {
           const result = await pool.query('SELECT * FROM student_data_table');
