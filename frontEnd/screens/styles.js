@@ -68,15 +68,40 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
     },
     title: {
-      fontSize: 32,
+      fontSize: 36, // Larger title size
       fontWeight: 'bold',
-      marginBottom: 40,
+      marginBottom: 20,
+      color: '#2196f3', // Blue color for title
+      textAlign: 'center', // Centered text
+      textShadowColor: '#000', // Text shadow for depth
+      textShadowOffset: { width: 1, height: 1 }, // Shadow offset
+      textShadowRadius: 3, // Shadow radius
     },
     buttonContainer: {
-      marginVertical: 15,
-      width: '70%',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      marginVertical: 20,
+      width: '80%', // Wider button container
+      backgroundColor: '#2196f3', // Button background color
+      borderRadius: 10, // Rounded corners for button container
+      overflow: 'hidden', // Ensure rounded corners apply to children
+    },
+    startingScreenContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#ffeb3b', // Bright yellow background
+      padding: 20,
+    },
+
+    instruction: {
+      fontSize: 22,
+      color: '#000', // Black color for instruction text
+      textAlign: 'center', // Centered text
+      marginBottom: 30,
+      fontStyle: 'italic', // Italic style for emphasis
+    },
+    button: {
+      paddingVertical: 10, // Padding for button
+      alignItems: 'center', // Center text in button
     },
   });
 
