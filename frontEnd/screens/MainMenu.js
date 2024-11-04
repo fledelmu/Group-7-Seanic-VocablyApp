@@ -1,23 +1,23 @@
 import React from 'react';
 import { Text, View, Button } from 'react-native';
-import { mainMenuStyles, colors } from './styles';
+import { styles, colors } from './styles';
 
 function MainMenuScreen({ navigation }) {
   return (
-    <View style={mainMenuStyles.mainMenuContainer}>
-      <Text style={mainMenuStyles.title}>Alphabet Learning {'\n'} App</Text>
-      <View style={mainMenuStyles.buttonContainer}>
+    <View style={styles.mainMenuContainer}>
+      <Text style={styles.title}>Alphabet Learning {'\n'} App</Text>
+      <View style={styles.buttonContainer}>
         <Button
-          color={colors.darkBrown} 
+          color={colors.pastelBlue} 
           title="Start (A)"
-          onPress={() => navigation.navigate('Starting')}
+          onPress={() => navigation.navigate('StartorContinue')}
         />
       </View>
-      <View style={mainMenuStyles.buttonContainer}>
+      <View style={styles.buttonContainer}>
         <Button
-          color={colors.darkBrown} 
+          color={colors.pastelBlue} 
           title="Selection"
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('AlphabetView')}
         />
       </View>
     </View>

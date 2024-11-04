@@ -9,8 +9,18 @@ function StartingScreen({ navigation }) {
       <Text style={styles.instruction}>Get ready to learn your letters.</Text>
       <View style={styles.buttonContainer}>
         <Button
+          style={styles.button}
+          color={colors.pastelBlue}
           title="Continue"
-          onPress={() => navigation.navigate('Alphabet', { letter: 'A' })}
+          onPress={() => navigation.navigate('AlphabetTestScreen', { letter: 'A' })}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          color={colors.pastelBlue}
+          title="New"
+          onPress={() => navigation.navigate('AlphabetTestScreen', { letter: 'A' })}
         />
       </View>
     </View>
