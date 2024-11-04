@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Text, View, Image, Button } from 'react-native';
 import { postStudentData } from '../api';
-import styles from './styles'
+import {styles, colors} from './styles'
 import Student from '../classes/Student.js';
+
 
 // Alphabet Detail screen with swipe feature and check/wrong functionality
 function AlphabetDetailScreen({ route, navigation }) {

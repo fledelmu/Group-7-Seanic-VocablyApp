@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, ScrollView } from 'react-native';
-import styles from './styles';
+import {styles, colors} from './styles'
 
 // Home Screen to display alphabet letters
 function HomeScreen({ navigation }) {
