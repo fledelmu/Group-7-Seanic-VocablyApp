@@ -9,7 +9,7 @@ function MainMenuScreen({ navigation }) {
       <View style={styles.buttonContainer}>
         <Button
           title="Start (A)"
-          onPress={() => navigation.navigate('Alphabet', { letter: 'A' })}
+          onPress={() => navigation.navigate('Starting')}
         />
       </View>
       <View style={styles.buttonContainer}>
