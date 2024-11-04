@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Button } from 'react-native';
-import styles from './styles';
+import {styles, colors} from './styles'
 
 function MainMenuScreen({ navigation }) {
   return (

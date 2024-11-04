@@ -2,6 +2,14 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 
+const colors = {
+  primary: '#FEFEFE',    
+  secondary: '#E6E8EB',  
+  accent: '#F6E9B2',     
+  background: '#E6E8EB', 
+  text: '#070606',       
+};
+
 const styles = StyleSheet.create({
     scrollContainer: {
       flexGrow: 1,
@@ -105,4 +113,4 @@ const styles = StyleSheet.create({
     },
   });
 
-  export default styles;
+  export {styles, colors};
