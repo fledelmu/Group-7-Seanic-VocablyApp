@@ -1,3 +1,0 @@
-postgresql://studentdata_db_user:k2eoLHlpGb7qD6ZyIU1YvDJD2g1go0Di@dpg-
-csdoorlsvqrc7392l4ug-a.singapore-postgres.render.com
-/studentdata_db
