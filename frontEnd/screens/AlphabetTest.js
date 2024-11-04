@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, Image, Button } from 'react-native';
 import { postStudentData } from '../api';
 import {styles, colors} from './styles'
@@ -174,13 +174,7 @@ function AlphabetDetailScreen({ route, navigation }) {
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
   
-    const [student, setStudent] = useState(null);
-
-    useEffect(() => {
-      if (student) {
-          setStudent(new Student(student));
-      }
-    }, [student]);
+    const [student, setStudent] = useState(new Student('test'));
 
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {
@@ -190,7 +184,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         // Move to the next letter if current letter's words are exhausted
         const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
         if (nextLetter <= 'Z'&& navigation) {
-          navigation.navigate('Alphabet', { letter: nextLetter });
+          navigation.navigate('AlphabetTestScreen', { letter: nextLetter });
           student.addScore();
           setWordIndex(0);
         } else {
@@ -237,8 +231,18 @@ function AlphabetDetailScreen({ route, navigation }) {
           )}
         </View>
         <View style={styles.buttonContainer}>
-          <Button title="Check" onPress={handleCheck} />
-          <Button title="Wrong" onPress={handleWrong} />
+          <Button 
+          title="Check" 
+          color={colors.pastelBlue}
+          onPress={handleCheck} 
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button 
+          title="Wrong" 
+          color={colors.pastelBlue}
+          onPress={handleWrong} 
+          />
         </View>
       </View>
     );

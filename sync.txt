@@ -1,2 +1,2 @@
 To sync feature branch to main branch:
-git pull origin master
+git pull origin main
