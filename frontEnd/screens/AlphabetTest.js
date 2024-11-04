@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, Image, Button } from 'react-native';
 import { postStudentData } from '../api';
 import styles from './styles'
+import Student from './classes/Student';
 
 // Alphabet Detail screen with swipe feature and check/wrong functionality
 function AlphabetDetailScreen({ route, navigation }) {
@@ -78,7 +79,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         { word: 'Leaf', image: require('./assets/placeholder.png') },
         { word: 'Lamp', image: require('./assets/placeholder.png') },
         { word: 'Ladder', image: require('./assets/placeholder.png') },
-      ],
+      ],  
       M: [
         { word: 'Monkey', image: require('./assets/monkey.png') },
         { word: 'Moon', image: require('./assets/placeholder.png') },
@@ -172,8 +173,13 @@ function AlphabetDetailScreen({ route, navigation }) {
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
   
-    const [name, setName] = useState(''); // added variable for name
-    const [score, setScore] = useState(0); // added variable for score
+    const [student, setStudent] = useState(null);
+
+    useEffect(() => {
+      if (student) {
+          setStudent(new Student(student));
+      }
+    }, [student]);
 
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {
@@ -184,7 +190,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
         if (nextLetter <= 'Z'&& navigation) {
           navigation.navigate('Alphabet', { letter: nextLetter });
-          setScore(prevScore => prevScore + 1);
+          student.addScore();
           setWordIndex(0);
         } else {
           console.log("You've completed the alphabet!");
@@ -206,7 +212,7 @@ function AlphabetDetailScreen({ route, navigation }) {
           const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
           if (nextLetter <= 'Z'&&navigation) {
             navigation.navigate('Alphabet', { letter: nextLetter });
-            setScore(prevScore => prevScore + 1);
+            student.addScore();
             setWordIndex(0);
           } else {
             console.log("You've completed the alphabet!");
