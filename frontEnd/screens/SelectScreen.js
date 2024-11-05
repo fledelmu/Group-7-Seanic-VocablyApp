@@ -13,7 +13,7 @@ function HomeScreen({ navigation }) {
             <View key={letter} style={styles.letterContainer}>
               <Text
                 style={styles.letter}
-                onPress={() => navigation.navigate('AlphabetTestScreen', { letter })}
+                onPress={() => navigation.navigate('Alphabet Test Screen', { letter })}
               >
                 {letter}
               </Text>

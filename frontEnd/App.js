@@ -6,16 +6,25 @@ import HomeScreen from './screens/SelectScreen';
 import AlphabetDetailScreen from './screens/AlphabetTest';
 import StartingScreen from './screens/StartScreen';
 import { colors } from './screens/styles';
+import NewPlayerScreen from './screens/NewPlayerScreen';
+import ContinueScreen from './screens/ContinueScreen';
+import { initDatabase } from './database';
+
+
+
 
 // Stack Navigator
 const Stack = createStackNavigator();
 
 export default function App() {
+  useEffect(() => {
+    initDatabase(); // Initialize the database when the app loads
+  }, []);
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainMenu">
+      <Stack.Navigator initialRouteName="Main Menu">
         <Stack.Screen 
-        name="MainMenu" 
+        name="Main Menu" 
         component={MainMenuScreen} 
         options={{
           headerStyle: {
@@ -28,7 +37,7 @@ export default function App() {
         }} 
         /> 
         <Stack.Screen 
-        name="StartorContinue" 
+        name="Start or Continue" 
         component={StartingScreen} 
         options={{
           headerStyle: {
@@ -41,7 +50,7 @@ export default function App() {
         }} 
         /> 
         <Stack.Screen 
-        name="AlphabetView" 
+        name="Alphabet View" 
         component={HomeScreen} 
         options={{
           headerStyle: {
@@ -54,7 +63,7 @@ export default function App() {
         }}
         />
         <Stack.Screen 
-        name="AlphabetTestScreen" 
+        name="Alphabet Test Screen" 
         component={AlphabetDetailScreen} 
         options={{
           headerStyle: {
@@ -66,7 +75,42 @@ export default function App() {
           },
         }}
         />
+        <Stack.Screen 
+        name="New Player Screen" 
+        component={NewPlayerScreen} 
+        options={{
+          headerStyle: {
+            backgroundColor: colors.pastelGreen, 
+          },
+          headerTintColor: colors.darkBrown, 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+        />
+        <Stack.Screen 
+        name="Continue Screen" 
+        component={ContinueScreen} 
+        options={{
+          headerStyle: {
+            backgroundColor: colors.pastelGreen, 
+          },
+          headerTintColor: colors.darkBrown, 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+        />
+        
+        
+        
+        
+        
+        
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+
