@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, Image, Button } from 'react-native';
 import { postStudentData } from '../api';
 import {styles, colors} from './styles'
-import Student from '../classes/Student.js';
+import Student from '../classes/Student';
 
 
 // Alphabet Detail screen with swipe feature and check/wrong functionality
 function AlphabetDetailScreen({ route, navigation }) {
-    const { letter: initialLetter } = route.params;
+    const { letter: initialLetter, studentName } = route.params;
+    const student = new Student(studentName);
+    //console.log(`Student created: ${student.getName()}`);
     const wordImageMap = {
       A: [
         { word: 'Apple', image: require('./assets/apple.png') },
@@ -173,8 +175,6 @@ function AlphabetDetailScreen({ route, navigation }) {
 
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
-  
-    const [student, setStudent] = useState(new Student('test'));
 
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {

@@ -6,6 +6,7 @@ import HomeScreen from './screens/SelectScreen';
 import AlphabetDetailScreen from './screens/AlphabetTest';
 import StartingScreen from './screens/StartScreen';
 import { colors } from './screens/styles';
+import NewStudentScreen from './screens/NewStudentScreen';
 
 // Stack Navigator
 const Stack = createStackNavigator();
@@ -56,6 +57,19 @@ export default function App() {
         <Stack.Screen 
         name="AlphabetTestScreen" 
         component={AlphabetDetailScreen} 
+        options={{
+          headerStyle: {
+            backgroundColor: colors.pastelGreen, 
+          },
+          headerTintColor: colors.darkBrown, 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+        />
+        <Stack.Screen
+        name = "New Student"
+        component={NewStudentScreen}
         options={{
           headerStyle: {
             backgroundColor: colors.pastelGreen, 

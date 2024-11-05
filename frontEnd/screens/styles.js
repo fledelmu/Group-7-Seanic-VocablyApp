@@ -32,6 +32,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  input: {
+    height: 50,
+    borderColor: colors.slateGray, // Change this to a color from your colors object
+    borderWidth: 2,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginVertical: 20,
+    width: '80%', // Adjust to your preference
+    backgroundColor: '#fff', // Change to a desired background color
+},
   title: {
     fontSize: 36, // Larger title size
     fontWeight: 'bold',

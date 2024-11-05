@@ -20,7 +20,7 @@ function StartingScreen({ navigation }) {
           style={styles.button}
           color={colors.pastelBlue}
           title="New"
-          onPress={() => navigation.navigate('AlphabetTestScreen', { letter: 'A' })}
+          onPress={() => navigation.navigate('New Student')}
         />
       </View>
     </View>
