@@ -30,21 +30,20 @@ pool.connect()
 
   // here
   app.post('/add-info/post-student-data', async (req, res) => {
-      try {
-          const student_name = 'John Doe';
-          const student_score = 85;
+    try {
+        const { student_name, student_score } = req.body;
 
-          const result = await pool.query(
-              'INSERT INTO student_data_table (student_name, student_score) VALUES ($1, $2) RETURNING *',
-              [student_name, student_score]
-          );
+        const result = await pool.query(
+            'INSERT INTO student_data_table (student_name, student_score) VALUES ($1, $2) RETURNING *',
+            [student_name, student_score]
+        );
 
-          res.status(201).send(`Student added with ID: ${result.rows[0].student_id}`);
-      } catch (error) {
-          console.error('Error inserting student:', error);
-          res.status(500).send('Error inserting student');
-      }
-  });
+        res.status(201).send(`Student added with ID: ${result.rows[0].student_id}`);
+    } catch (error) {
+        console.error('Error inserting student:', error);
+        res.status(500).send('Error inserting student');
+    }
+});
 
   // this too
   app.get('/view-data/get-student-data', async (req, res) => {
