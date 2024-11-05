@@ -184,7 +184,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         // Move to the next letter if current letter's words are exhausted
         const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
         if (nextLetter <= 'Z'&& navigation) {
-          navigation.navigate('AlphabetTestScreen', { letter: nextLetter });
+          navigation.navigate('Alphabet Test Screen', { letter: nextLetter });
           student.addScore();
           setWordIndex(0);
         } else {
