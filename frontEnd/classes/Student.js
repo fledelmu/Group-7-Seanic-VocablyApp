@@ -6,7 +6,7 @@ class Student {
     constructor(name) {
         this.#name = name;
         this.#score = 0;
-        this.#lastLetter = 'A'; // Initialize with a default value, adjust as necessary
+        this.#lastLetter = 'A'; 
     }
 
     // Transformers

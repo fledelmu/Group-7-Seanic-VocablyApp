@@ -8,6 +8,7 @@ const colors = {
   deepCoral: '#07244C',  // Changed from coral to deepCoral to reflect a darker shade
   slateGray: '#7E7F9C',  // Changed from darkBrown to slateGray for better representation
   black: '#000000',
+  white: '#FFFF'
 };
 
 // Other Styles
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: colors.lightGray,
   },
   topCenterLetter: {
     position: 'absolute',
@@ -100,10 +101,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 100,
   },
+  box: {
+    width: 330, 
+    height: 330,
+    backgroundColor: colors.white, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 40, 
+    padding: 10, 
+  },
   image: {
     width: 200,
     height: 200,
-    marginBottom: 20,
   },
   wordText: {
     fontSize: 24,

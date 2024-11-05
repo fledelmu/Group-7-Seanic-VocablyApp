@@ -3,7 +3,7 @@ import { Text, View, Image, Button } from 'react-native';
 import { postStudentData } from '../api';
 import {styles, colors} from './styles'
 import Student from '../classes/Student';
-
+import { insertStudent } from '../localDB';
 
 // Alphabet Detail screen with swipe feature and check/wrong functionality
 function AlphabetDetailScreen({ route, navigation }) {
@@ -225,23 +225,25 @@ function AlphabetDetailScreen({ route, navigation }) {
         <View style={styles.wordContainer}>
           {currentWord && (
             <>
-              <Image source={currentWord.image} style={styles.image} />
+              <View style={styles.box}>
+                <Image source={currentWord.image} style={styles.image} />
+              </View>
               <Text style={styles.wordText}>{currentWord.word}</Text>
             </>
           )}
         </View>
         <View style={styles.buttonContainer}>
           <Button 
-          title="Check" 
-          color={colors.pastelBlue}
-          onPress={handleCheck} 
+            title="Check" 
+            color={colors.pastelBlue}
+            onPress={handleCheck} 
           />
         </View>
         <View style={styles.buttonContainer}>
           <Button 
-          title="Wrong" 
-          color={colors.pastelBlue}
-          onPress={handleWrong} 
+            title="Wrong" 
+            color={colors.pastelBlue}
+            onPress={handleWrong} 
           />
         </View>
       </View>
