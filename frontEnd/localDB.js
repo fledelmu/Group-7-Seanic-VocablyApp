@@ -25,12 +25,12 @@ const createTable = () => {
 };
 
 // Insert a student into the database
-const insertStudent = (student) => {
+const insertStudent = (name, score, progress) => {
     return new Promise((resolve, reject) => {
         db.transaction(tx => {
             tx.executeSql(
                 'INSERT INTO students (name, score, lastLetter) VALUES (?, ?, ?)',
-                [student.name, student.score, student.lastLetter],
+                [name, score, progress],
                 (tx, result) => {
                     console.log('Inserted student with ID:', result.insertId);
                     resolve(result);
@@ -46,21 +46,22 @@ const insertStudent = (student) => {
 
 // Fetch all students from the database
 const fetchStudents = () => {
-    return new Promise((resolve, reject) => {
-        db.transaction(tx => {
-            tx.executeSql(
-                'SELECT * FROM students',
-                [],
-                (tx, result) => {
-                    const students = result.rows._array;
-                    resolve(students);
-                },
-                (tx, error) => {
-                    console.error('Error fetching students:', error);
-                    reject(error);
+    db.transaction(tx => {
+        tx.executeSql(
+            'SELECT * FROM students',
+            [],
+            (tx, result) => {
+                const students = [];
+                for (let i = 0; i < result.rows.length; i++) {
+                    students.push(result.rows.item(i));
                 }
-            );
-        });
+                // Print the fetched student data to the console
+                console.log('Students:', students);
+            },
+            (tx, error) => {
+                console.error('Error fetching students:', error);
+            }
+        );
     });
 };
 

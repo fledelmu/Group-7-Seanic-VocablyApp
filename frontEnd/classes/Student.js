@@ -10,10 +10,9 @@ class Student {
     }
 
     // Transformers
-    addScore() {
-        this.#score += 1;
+    setScore(score){
+        this.#score = score;
     }
-
     setName(name) {
         this.#name = name;
     }

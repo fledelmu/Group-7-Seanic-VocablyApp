@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Image, Button } from 'react-native';
+import { Text, View, Image, Button, Alert } from 'react-native';
 import { postStudentData } from '../api';
 import {styles, colors} from './styles'
 import Student from '../classes/Student';
-import { insertStudent } from '../localDB';
+import { insertStudent, fetchStudents } from '../localDB';
 
 // Alphabet Detail screen with swipe feature and check/wrong functionality
 function AlphabetDetailScreen({ route, navigation }) {
     const { letter: initialLetter, studentName } = route.params;
+    console.log('Navigated to AlphabetDetailScreen with:', { initialLetter, studentName });
     const student = new Student(studentName);
     //console.log(`Student created: ${student.getName()}`);
     const wordImageMap = {
@@ -176,16 +177,20 @@ function AlphabetDetailScreen({ route, navigation }) {
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
 
+    const [studentScore, setStudentScore] = useState(0);
+
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {
         setWordIndex(prevIndex => prevIndex + 1);
+        setStudentScore(prev => prev + 1);
+        console.log('Updated local score:', studentScore);
         setWrongTries(0);
       } else {
         // Move to the next letter if current letter's words are exhausted
         const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
         if (nextLetter <= 'Z'&& navigation) {
-          navigation.navigate('AlphabetTestScreen', { letter: nextLetter });
-          student.addScore();
+          navigation.navigate('AlphabetTestScreen', { letter: nextLetter, studentName: student.getName() });
+          setStudentScore(prev => prev + 1);
           setWordIndex(0);
         } else {
           console.log("You've completed the alphabet!");
@@ -206,8 +211,8 @@ function AlphabetDetailScreen({ route, navigation }) {
           // Move to the next letter if current letter's words are exhausted
           const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
           if (nextLetter <= 'Z'&&navigation) {
-            navigation.navigate('Alphabet', { letter: nextLetter });
-            student.addScore();
+            navigation.navigate('Alphabet', { letter: nextLetter, studentName: student.getName() });
+            setStudentScore(prev => prev + 1);
             setWordIndex(0);
           } else {
             console.log("You've completed the alphabet!");
@@ -216,19 +221,57 @@ function AlphabetDetailScreen({ route, navigation }) {
         }
       }
     };
-  
+    
+    const handleExit = () => {
+      student.setLastLetter(initialLetter);
+      student.setScore(studentScore);
+      Alert.alert(
+        "Exit",
+        "Are you sure you want to go back to the main menu?",
+        [
+          {
+            text: "Cancel",
+            style: "cancel" 
+          },
+          {
+            text: "OK",
+            
+            onPress: () => {
+              student.setLastLetter(initialLetter);
+              const name = student.getName(); 
+              const score = student.getScore(); 
+              const progress = student.getLastLetter();
+              
+              insertStudent(name, score, progress)
+                .then(result => {
+                  console.log('Student inserted successfully:', result);
+                  fetchStudents();
+                  navigation.navigate("MainMenu");
+                })
+                .catch(error => {
+                  console.error('Error inserting student:', error);
+      
+                  Alert.alert("Error", "Failed to save student data. Please try again.");
+                });
+                navigation.navigate("MainMenu")}, 
+          }
+        ],
+        { cancelable: true } 
+      );
+    };
+
     return (
-      <View style={styles.detailContainer}>
+      <View style={styles.detailContainer}>       
         <View style={styles.topCenterLetter}>
           <Text style={styles.letterTopCenter}>{initialLetter}</Text>
         </View>
         <View style={styles.wordContainer}>
           {currentWord && (
             <>
+              <Text style={styles.wordText}>{currentWord.word}</Text>
               <View style={styles.box}>
                 <Image source={currentWord.image} style={styles.image} />
               </View>
-              <Text style={styles.wordText}>{currentWord.word}</Text>
             </>
           )}
         </View>
@@ -246,8 +289,16 @@ function AlphabetDetailScreen({ route, navigation }) {
             onPress={handleWrong} 
           />
         </View>
+        <View style={styles.exitContainer}>
+          <Button
+          title="X"
+          color={colors.pastelBlue}
+          onPress={handleExit}
+          />
+        </View>
       </View>
     );
   }
+  
   
   export default AlphabetDetailScreen;

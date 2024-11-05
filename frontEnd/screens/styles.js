@@ -13,11 +13,24 @@ const colors = {
 
 // Other Styles
 const styles = StyleSheet.create({
+  
   mainMenuContainer: {
     flex: 1,
     backgroundColor: colors.lightGray, // Updated to use lightGray
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  exitContainer: {
+    position: 'absolute', // Enable absolute positioning
+    top: 10, // Distance from the top
+    right: 20, // Distance from the right
+    marginVertical: 20,
+    width: '10%', // Width of the button container
+    backgroundColor: colors.slateGray, // Background color
+    borderRadius: 10, // Rounded corners
+    overflow: 'hidden', // Apply rounded corners to children
+    borderColor: colors.slateGray, // Border color
+    borderWidth: 2, // Border width
   },
   buttonContainer: {
     marginVertical: 20,
@@ -104,6 +117,8 @@ const styles = StyleSheet.create({
   box: {
     width: 330, 
     height: 330,
+    marginTop: -40,
+    marginBottom: 15,
     backgroundColor: colors.white, 
     justifyContent: 'center',
     alignItems: 'center',
@@ -115,14 +130,16 @@ const styles = StyleSheet.create({
     height: 200,
   },
   wordText: {
-    fontSize: 24,
+    fontSize: 45,
     fontWeight: 'bold',
+    marginBottom: 70,
+    marginTop: -30,
   },
   startingScreenContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.lightGray, // Consider changing this to use a color from the colors object
+    backgroundColor: colors.lightGray,
     padding: 20,
   },
   instruction: {
