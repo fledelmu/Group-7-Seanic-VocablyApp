@@ -1,8 +1,11 @@
 // kani inyong main sa backend
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import pkg from 'pg'; 
 import dotenv from 'dotenv';
+ 
+
 
 const app = express()
 const port = process.env.PORT || 10000;
@@ -24,7 +27,7 @@ pool.connect()
   .catch(err => console.error('Connection error', err.stack));
 
   app.get('/', (req, res) => {
-    res.send('Conneted')
+    res.send('Connected')
   })
   
   app.listen(port, () => {
