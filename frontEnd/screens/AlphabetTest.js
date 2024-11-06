@@ -191,7 +191,6 @@ function AlphabetDetailScreen({ route, navigation }) {
         if (nextLetter <= 'Z'&& navigation) {
           navigation.navigate('AlphabetTestScreen', { letter: nextLetter, studentName: student.getName() });
           setStudentScore(prev => prev + 1);
-
           setWordIndex(0);
         } else {
           console.log("You've completed the alphabet!");

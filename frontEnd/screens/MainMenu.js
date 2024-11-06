@@ -10,14 +10,14 @@ function MainMenuScreen({ navigation }) {
         <Button
           color={colors.pastelBlue} 
           title="Start (A)"
-          onPress={() => navigation.navigate('Start or Continue')}
+          onPress={() => navigation.navigate('StartorContinue')}
         />
       </View>
       <View style={styles.buttonContainer}>
         <Button
           color={colors.pastelBlue} 
           title="Selection"
-          onPress={() => navigation.navigate('Alphabet View')}
+          onPress={() => navigation.navigate('AlphabetView')}
         />
       </View>
     </View>
