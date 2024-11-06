@@ -74,22 +74,25 @@ const insertStudent = (name, score, progress) => {
 
 // Fetch all students from the database
 const fetchStudents = () => {
-    db.transaction(tx => {
-        tx.executeSql(
-            'SELECT * FROM students',
-            [],
-            (tx, result) => {
-                const students = [];
-                for (let i = 0; i < result.rows.length; i++) {
-                    students.push(result.rows.item(i));
+    return new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'SELECT * FROM students',
+                [],
+                (tx, result) => {
+                    const students = [];
+                    for (let i = 0; i < result.rows.length; i++) {
+                        students.push(result.rows.item(i));
+                    }
+                    console.log('Students:', students); // Log the fetched data
+                    resolve(students); // Resolve the promise with the data
+                },
+                (tx, error) => {
+                    console.error('Error fetching students:', error);
+                    reject(error); // Reject the promise with the error
                 }
-                // Print the fetched student data to the console
-                console.log('Students:', students);
-            },
-            (tx, error) => {
-                console.error('Error fetching students:', error);
-            }
-        );
+            );
+        });
     });
 };
 

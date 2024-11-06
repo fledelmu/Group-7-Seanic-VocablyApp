@@ -160,13 +160,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   studentItem: {
-    flexDirection: 'row', // Arranges children in a horizontal row
-    alignItems: 'center', // Vertically aligns the items in the center
-    marginBottom: 10, // Adds space between items
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+    marginHorizontal: 5, // Add a little horizontal spacing
 },
   flatListContainer: {
       paddingBottom: 20, // Adds padding below the FlatList
-  }
+  },
+  scrollableBox: {
+    maxHeight: 300, // Limit height for the box
+    width: '90%',
+    borderWidth: 1,
+    borderColor: colors.slateGray,
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: colors.slateGray,
+    shadowColor: '#000', // Shadow color for depth
+    shadowOffset: { width: 0, height: 2 }, // Position shadow
+    shadowOpacity: 0.3, // Shadow transparency
+    shadowRadius: 5, // Spread of shadow
+    elevation: 5, // Android shadow effect
+  },
 });
 
 export { styles, colors};
