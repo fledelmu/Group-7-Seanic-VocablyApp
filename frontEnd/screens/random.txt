@@ -1,0 +1,52 @@
+return (
+      <View style={styles.detailContainer}>       
+        <View style={styles.topCenterLetter}>
+          <Text style={styles.letterTopCenter}>{initialLetter}</Text>
+        </View>
+        <View style={styles.wordContainer}>
+          {currentWord && (
+            <>
+              <Text style={styles.wordText}>{currentWord.word}</Text>
+              <View style={styles.box}>
+                <Image source={currentWord.image} style={styles.image} />
+              </View>
+            </>
+          )}
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button 
+            title="Check" 
+            color={colors.pastelBlue}
+            onPress={handleCheck} 
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button 
+            title="Wrong" 
+            color={colors.pastelBlue}
+            onPress={handleWrong} 
+          />
+        </View>
+        <View style={styles.exitContainer}>
+          <Button
+          title="X"
+          color={colors.pastelBlue}
+          onPress={handleExit}
+          />
+        </View>
+      </View>
+    );
+
+
+
+    <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={handleBack}>
+          <Text style={styles.wordText}>Back</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleNext}>
+          <Text style={styles.wordText}>Next</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={playAudio}>
+          <Text style={styles.wordText}>Audio</Text>
+        </TouchableOpacity>
+      </View>
