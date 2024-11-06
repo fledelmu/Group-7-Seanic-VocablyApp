@@ -96,6 +96,7 @@ const fetchStudents = () => {
     });
 };
 
+
 const apiFetchStudent = () => {
     return new Promise((resolve, reject) => {
         db.transaction(tx => {

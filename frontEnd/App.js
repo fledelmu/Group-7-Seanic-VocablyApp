@@ -94,7 +94,7 @@ export default function App() {
           options={headerOptions} 
         />
 
-<Stack.Screen 
+        <Stack.Screen 
           name="ContinueScreen"  
           component={ContinueScreen} 
           options={headerOptions} 
