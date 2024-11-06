@@ -65,4 +65,28 @@ const fetchStudents = () => {
     });
 };
 
-export { createTable, insertStudent, fetchStudents };
+const apiFetchStudent = () => {
+    return new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'SELECT name, score FROM students', 
+                [],
+                (tx, result) => {
+                    const students = [];
+                    for (let i = 0; i < result.rows.length; i++) {
+                        const student = result.rows.item(i); 
+                        students.push({ name: student.name, score: student.score }); 
+                    }
+                    console.log('Fetched Students:', students); 
+                    resolve(students); 
+                },
+                (tx, error) => {
+                    console.error('Error fetching students:', error);
+                    reject(error); 
+                }
+            );
+        });
+    });
+};
+
+export { createTable, insertStudent, fetchStudents, apiFetchStudent };
