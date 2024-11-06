@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { styles } from './styles';
-import { apiFetchStudent } from '../localDB'; // Ensure this is your fetch function
+import { fetchStudents } from '../localDB'; // Ensure this is your fetch function
 
 function ContinueScreen() {
     const [students, setStudents] = useState([]); // Store students for rendering
@@ -9,7 +9,7 @@ function ContinueScreen() {
     useEffect(() => {
         const loadStudents = async () => {
             try {
-                const studentsData = await apiFetchStudent(); // Fetch students data
+                const studentsData = await fetchStudents(); // Fetch students data
                 const studentList = [];
 
                 studentsData.forEach((student) => {
