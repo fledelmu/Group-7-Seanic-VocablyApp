@@ -12,13 +12,15 @@ function MainMenuScreen({ navigation }) {
   useEffect(() => {
     const postData = async () => {
       try {
-
         const students = await apiFetchStudent();
-        const name = students.name;
-        const score = students.score;
-        
-        await postStudentData(name, score);
      
+        students.forEach(async (student) => {
+          const { name, score } = student;
+          console.log('Name:', name);
+          console.log('Score:', score);
+
+          await postStudentData(name, score);
+        });
 
         console.log('Data synchronized successfully.');
       } catch (error) {
@@ -51,6 +53,15 @@ function MainMenuScreen({ navigation }) {
           onPress={() => navigation.navigate('AlphabetView')}
         />
       </View>
+
+      <View style={styles.buttonContainer}>
+        <Button
+          color={colors.pastelBlue} 
+          title="View Students"
+          onPress={() => navigation.navigate('AlphabetView')}
+        />
+      </View>
+
     </View>
   );
 }
