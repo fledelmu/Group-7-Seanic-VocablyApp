@@ -13,6 +13,12 @@ const colors = {
 
 // Other Styles
 const styles = StyleSheet.create({
+  continueContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    padding: 10,
+  },
   
   mainMenuContainer: {
     flex: 1,
@@ -153,6 +159,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
   },
+  studentItem: {
+    flexDirection: 'row', // Arranges children in a horizontal row
+    alignItems: 'center', // Vertically aligns the items in the center
+    marginBottom: 10, // Adds space between items
+},
+  flatListContainer: {
+      paddingBottom: 20, // Adds padding below the FlatList
+  }
 });
 
 export { styles, colors};

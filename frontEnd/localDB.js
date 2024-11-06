@@ -28,15 +28,43 @@ const createTable = () => {
 const insertStudent = (name, score, progress) => {
     return new Promise((resolve, reject) => {
         db.transaction(tx => {
+            // First, check if the student exists by name
             tx.executeSql(
-                'INSERT INTO students (name, score, lastLetter) VALUES (?, ?, ?)',
-                [name, score, progress],
+                'SELECT * FROM students WHERE name = ?',
+                [name],
                 (tx, result) => {
-                    console.log('Inserted student with ID:', result.insertId);
-                    resolve(result);
+                    if (result.rows.length > 0) {
+                        // If the student exists, update the record
+                        tx.executeSql(
+                            'UPDATE students SET score = ?, lastLetter = ? WHERE name = ?',
+                            [score, progress, name],
+                            (tx, result) => {
+                                console.log(`Updated student: ${name}`);
+                                resolve(result);
+                            },
+                            (tx, error) => {
+                                console.error('Error updating student:', error);
+                                reject(error);
+                            }
+                        );
+                    } else {
+                        // If the student does not exist, insert a new record
+                        tx.executeSql(
+                            'INSERT INTO students (name, score, lastLetter) VALUES (?, ?, ?)',
+                            [name, score, progress],
+                            (tx, result) => {
+                                console.log('Inserted student with ID:', result.insertId);
+                                resolve(result);
+                            },
+                            (tx, error) => {
+                                console.error('Error inserting student:', error);
+                                reject(error);
+                            }
+                        );
+                    }
                 },
                 (tx, error) => {
-                    console.error('Error inserting student:', error);
+                    console.error('Error checking if student exists:', error);
                     reject(error);
                 }
             );

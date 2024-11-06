@@ -9,6 +9,8 @@ import { colors } from './screens/styles';
 import NewStudentScreen from './screens/NewStudentScreen';
 import { createTable } from './localDB';
 import AlphabetViewScreen from './screens/AlphabetViewScreen';
+import TableView from './screens/ViewStudentsScreen';
+import ContinueScreen from './screens/ContinueScreen';
 
 // Stack Navigator
 const Stack = createStackNavigator();
@@ -55,32 +57,49 @@ export default function App() {
             },
           }} 
         /> 
+
         <Stack.Screen 
           name="StartorContinue" 
           component={StartingScreen} 
           options={headerOptions} 
         /> 
+
         <Stack.Screen 
           name="AlphabetView" 
           component={HomeScreen} 
           options={headerOptions} 
         />
+
         <Stack.Screen 
           name="AlphabetTestScreen" 
           component={AlphabetDetailScreen} 
           options={headerOptions} 
         />
+
         <Stack.Screen
           name="New Student"
           component={NewStudentScreen}
           options={headerOptions}
         />
+
         <Stack.Screen 
-          name="AlphabetViewScreen"  
+          name="AlphabetPreview"  
           component={AlphabetViewScreen} 
           options={headerOptions} 
         />
         
+        <Stack.Screen 
+          name="StudentView"  
+          component={TableView} 
+          options={headerOptions} 
+        />
+
+<Stack.Screen 
+          name="ContinueScreen"  
+          component={ContinueScreen} 
+          options={headerOptions} 
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

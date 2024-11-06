@@ -175,7 +175,7 @@ function AlphabetViewScreen({ route, navigation }) {
       // Navigate to the next letter
       const nextLetter = String.fromCharCode(initialLetter.charCodeAt(0) + 1);
       if (nextLetter <= 'Z' && navigation) {
-        navigation.navigate('AlphabetViewScreen', { letter: nextLetter });
+        navigation.navigate('AlphabetPreview', { letter: nextLetter });
         setWordIndex(0); // Reset word index for the new letter
       } else {
         console.log("You've completed the alphabet!");
@@ -191,7 +191,7 @@ function AlphabetViewScreen({ route, navigation }) {
       // Navigate to the previous letter if at the first word
       const prevLetter = String.fromCharCode(initialLetter.charCodeAt(0) - 1);
       if (prevLetter >= 'A' && navigation) {
-        navigation.navigate('AlphabetViewScreen', { letter: prevLetter });
+        navigation.navigate('AlphabetPreview', { letter: prevLetter });
       } else {
         console.log("You're at the beginning of the alphabet.");
       }
