@@ -8,6 +8,7 @@ import StartingScreen from './screens/StartScreen';
 import { colors } from './screens/styles';
 import NewStudentScreen from './screens/NewStudentScreen';
 import { createTable } from './localDB';
+import AlphabetViewScreen from './screens/AlphabetViewScreen';
 
 // Stack Navigator
 const Stack = createStackNavigator();
@@ -74,6 +75,12 @@ export default function App() {
           component={NewStudentScreen}
           options={headerOptions}
         />
+        <Stack.Screen 
+          name="AlphabetViewScreen"  
+          component={AlphabetViewScreen} 
+          options={headerOptions} 
+        />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
