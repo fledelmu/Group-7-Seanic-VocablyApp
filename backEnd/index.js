@@ -35,17 +35,37 @@ pool.connect()
     try {
         const { student_name, student_score } = req.body;
 
-        const result = await pool.query(
-            'INSERT INTO student_data_table (student_name, student_score) VALUES ($1, $2) RETURNING *',
-            [student_name, student_score]
+        // Check if the student already exists
+        const checkResult = await pool.query(
+            'SELECT * FROM student_data_table WHERE student_name = $1',
+            [student_name]
         );
 
-        res.status(201).send(`Student added with ID: ${result.rows[0].student_id}`);
+        if (checkResult.rows.length > 0) {
+            // If the student exists, update the student_score
+            const updateResult = await pool.query(
+                'UPDATE student_data_table SET student_score = $1 WHERE student_name = $2 RETURNING *',
+                [student_score, student_name]
+            );
+
+            // Respond with the updated student information
+            res.status(200).send(`Student with ID: ${updateResult.rows[0].student_id} updated with new score: ${student_score}`);
+        } else {
+            // If the student does not exist, insert a new student record
+            const insertResult = await pool.query(
+                'INSERT INTO student_data_table (student_name, student_score) VALUES ($1, $2) RETURNING *',
+                [student_name, student_score]
+            );
+
+            // Respond with the inserted student information
+            res.status(201).send(`Student added with ID: ${insertResult.rows[0].student_id}`);
+        }
     } catch (error) {
-        console.error('Error inserting student:', error);
-        res.status(500).send('Error inserting student');
+        console.error('Error processing student data:', error);
+        res.status(500).send('Error processing student data');
     }
 });
+
 
   // this too
   app.get('/view-data/get-student-data', async (req, res) => {

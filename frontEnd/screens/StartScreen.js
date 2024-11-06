@@ -12,7 +12,7 @@ function StartingScreen({ navigation }) {
           style={styles.button}
           color={colors.pastelBlue}
           title="Continue"
-          onPress={() => navigation.navigate('AlphabetTestScreen', { letter: 'A' })}
+          onPress={() => navigation.navigate('ContinueScreen')}
         />
       </View>
       <View style={styles.buttonContainer}>

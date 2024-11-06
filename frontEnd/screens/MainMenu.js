@@ -58,7 +58,7 @@ function MainMenuScreen({ navigation }) {
         <Button
           color={colors.pastelBlue} 
           title="View Students"
-          onPress={() => navigation.navigate('AlphabetView')}
+          onPress={() => navigation.navigate('StudentView')}
         />
       </View>
 
