@@ -21,7 +21,7 @@ function StartingScreen({ navigation }) {
           style={styles.button}
           color={colors.pastelBlue}
           title="New"
-          onPress={() => navigation.navigate('New Player Screen')}
+          onPress={() => navigation.navigate('New Student')}
         />
       </View>
     </View>

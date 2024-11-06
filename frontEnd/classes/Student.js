@@ -1,28 +1,37 @@
-class Student{
+class Student {
     #name;
     #score;
+    #lastLetter;
 
-    constructor(name){
+    constructor(name) {
         this.#name = name;
         this.#score = 0;
+        this.#lastLetter = 'A'; 
     }
 
     // Transformers
-    addScore(){
-        this.#score += 1;
+    setScore(score){
+        this.#score = score;
     }
-
-    setName(name){
+    setName(name) {
         this.#name = name;
     }
 
+    setLastLetter(letter) {
+        this.#lastLetter = letter;
+    }
+
     // Accessors
-    getScore(){
+    getScore() {
         return this.#score;
     }
 
-    getName(){
+    getName() {
         return this.#name;
+    }
+
+    getLastLetter() {
+        return this.#lastLetter;
     }
 }
 

@@ -8,15 +8,29 @@ const colors = {
   deepCoral: '#07244C',  // Changed from coral to deepCoral to reflect a darker shade
   slateGray: '#7E7F9C',  // Changed from darkBrown to slateGray for better representation
   black: '#000000',
+  white: '#FFFF'
 };
 
 // Other Styles
 const styles = StyleSheet.create({
+  
   mainMenuContainer: {
     flex: 1,
     backgroundColor: colors.lightGray, // Updated to use lightGray
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  exitContainer: {
+    position: 'absolute', // Enable absolute positioning
+    top: 10, // Distance from the top
+    right: 20, // Distance from the right
+    marginVertical: 20,
+    width: '10%', // Width of the button container
+    backgroundColor: colors.slateGray, // Background color
+    borderRadius: 10, // Rounded corners
+    overflow: 'hidden', // Apply rounded corners to children
+    borderColor: colors.slateGray, // Border color
+    borderWidth: 2, // Border width
   },
   buttonContainer: {
     marginVertical: 20,
@@ -32,6 +46,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  input: {
+    height: 50,
+    borderColor: colors.slateGray, // Change this to a color from your colors object
+    borderWidth: 2,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginVertical: 20,
+    width: '80%', // Adjust to your preference
+    backgroundColor: '#fff', // Change to a desired background color
+},
   title: {
     fontSize: 36, // Larger title size
     fontWeight: 'bold',
@@ -72,7 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: colors.lightGray,
   },
   topCenterLetter: {
     position: 'absolute',
@@ -90,20 +114,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 100,
   },
+  box: {
+    width: 330, 
+    height: 330,
+    marginTop: -40,
+    marginBottom: 15,
+    backgroundColor: colors.white, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 40, 
+    padding: 10, 
+  },
   image: {
     width: 200,
     height: 200,
-    marginBottom: 20,
   },
   wordText: {
-    fontSize: 24,
+    fontSize: 45,
     fontWeight: 'bold',
+    marginBottom: 70,
+    marginTop: -30,
   },
   startingScreenContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.lightGray, // Consider changing this to use a color from the colors object
+    backgroundColor: colors.lightGray,
     padding: 20,
   },
   instruction: {
