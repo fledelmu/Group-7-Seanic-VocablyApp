@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { styles } from './styles';
 import { fetchStudents } from '../localDB'; // Ensure this is your fetch function
 
@@ -31,21 +31,21 @@ function ContinueScreen() {
     const renderItem = ({ item }) => (
         <View style={styles.studentItem}>
             <Text style={styles.studentText}>Name: {item.name}</Text>
-            <Text> Score: {item.score}</Text>
-            <Text> Last Letter: {item.lastLetter}</Text>
+            <Text>Last Letter: {item.lastLetter}</Text>
         </View>
     );
 
     return (
         <View style={styles.continueContainer}>
             <Text style={styles.title}>Students List</Text>
-            <FlatList
-                data={students}
-                renderItem={renderItem}
-                keyExtractor={(item, index) => index.toString()}
-                vertical={true} 
-                contentContainerStyle={styles.flatListContainer}
-            />
+            <View style={styles.scrollableBox}>
+                <FlatList
+                    data={students}
+                    renderItem={renderItem}
+                    keyExtractor={(item, index) => index.toString()}
+                    contentContainerStyle={styles.flatListContainer}
+                />
+            </View>
         </View>
     );
 }
