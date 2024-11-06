@@ -1,13 +1,20 @@
 import axios from 'axios';
 
-const API_URL = process.env.BASE_URL;
+const API_URL = "https://firstapp-4329.onrender.com"
 
 export const postStudentData = async (student_name, student_score) => {
     try {
-        const response = await axios.post(`${API_URL}/add-info/post-student-data`, {
+        let data = JSON.stringify({
             student_name,
-            student_score,
+            student_score
         });
+
+        const response = await axios.post(`${API_URL}/add-info/post-student-data`, data, {
+            headers: {
+                "Content-Type": "application/json",  // Ensure you're sending JSON
+            }
+        });
+        
         console.log(response.data); // Log or handle response as needed
     } catch (error) {
         console.error('Error posting student data:', error);

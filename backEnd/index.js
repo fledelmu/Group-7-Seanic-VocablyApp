@@ -1,12 +1,14 @@
 // kani inyong main sa backend
 import express from 'express';
-import bodyParser from 'body-parser';
 import pkg from 'pg'; 
 import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express()
 const port = process.env.PORT || 10000;
-dotenv.config();
+
+
+app.use(express.json());
 
 const { Pool } = pkg;
 
