@@ -1,6 +1,7 @@
+// StartingScreen.js
 import React from 'react';
 import { Text, View, Button } from 'react-native';
-import {styles, colors} from './styles'
+import { styles, colors } from './styles';
 
 function StartingScreen({ navigation }) {
   return (
@@ -12,7 +13,7 @@ function StartingScreen({ navigation }) {
           style={styles.button}
           color={colors.pastelBlue}
           title="Continue"
-          onPress={() => navigation.navigate('AlphabetTestScreen', { letter: 'A' })}
+          onPress={() => navigation.navigate('Continue Screen')}
         />
       </View>
       <View style={styles.buttonContainer}>
