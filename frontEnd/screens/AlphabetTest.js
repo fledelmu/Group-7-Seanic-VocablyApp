@@ -93,14 +93,14 @@ function AlphabetDetailScreen({ route, navigation }) {
       N: [
         { word: 'Nest', image: require('./assets/nest.png') },
         { word: 'Nose', image: require('./assets/nose.png') },
-        { word: 'Nut', image: require('./assets/nut.png') },
+        { word: 'Nut', image: require('./assets/nuts.png') },
         { word: 'Net', image: require('./assets/net.png') },
       ],
       O: [
         { word: 'Orange', image: require('./assets/orange.png') },
         { word: 'Owl', image: require('./assets/owl.png') },
         { word: 'Ocean', image: require('./assets/ocean.png') },
-        { word: 'Octopus', image: require('./assets/octupos.png') },
+        { word: 'Octopus', image: require('./assets/octopus.png') },
       ],
       P: [
         { word: 'Penguin', image: require('./assets/penguin.png') },
@@ -117,7 +117,7 @@ function AlphabetDetailScreen({ route, navigation }) {
       R: [
         { word: 'Rabbit', image: require('./assets/rabbit.png') },
         { word: 'Rainbow', image: require('./assets/rainbow.png') },
-        { word: 'Robot', image: require('./assets/robot.png') },
+        { word: 'Robot', image: require('./assets/ROBOT.png') },
         { word: 'Ring', image: require('./assets/ring.png') },
       ],
       S: [
