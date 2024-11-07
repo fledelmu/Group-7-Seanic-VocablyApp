@@ -36,14 +36,14 @@ function TableView() {
     
     const renderItem = ({ item }) => (
         <View style={styles.studentItem}>
-            <Text>Name: {item.student_name}</Text>
-            <Text>Score: {item.student_score}</Text>
+            <Text style={styles.studentText}>Name: {item.student_name}</Text>
+            <Text style={styles.studentText}>Score: {item.student_score}</Text>
         </View>
     );
 
     return (
         <View style={styles.continueContainer}>
-            <Text style={styles.title}>Students List</Text>
+            <Text style={styles.title}>Scoreboard</Text>
             <View style={styles.scrollableBox}>
                <FlatList
                 data={students}  // Pass the processed data to FlatList

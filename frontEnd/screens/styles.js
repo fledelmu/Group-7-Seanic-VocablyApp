@@ -1,23 +1,36 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import * as Font from 'expo-font';
 
 const screenWidth = Dimensions.get('window').width;
 
 const colors = {
-  pastelBlue: '#7671FA', // Changed from pastelGreen to pastelBlue for clarity
-  lightGray: '#E5EAF3',  // Changed from softYellow to lightGray for accuracy
-  deepCoral: '#07244C',  // Changed from coral to deepCoral to reflect a darker shade
-  slateGray: '#7E7F9C',  // Changed from darkBrown to slateGray for better representation
+  pastelBlue: '#7671FA', 
+  lightGray: '#E5EAF3',  
+  deepCoral: '#07244C', 
+  slateGray: '#7E7F9C',  
   black: '#000000',
   white: '#FFFF'
 };
 
 // Other Styles
 const styles = StyleSheet.create({
+  previewTitle: {
+    fontSize: 50, 
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: colors.black, 
+    textAlign: 'center',
+    textShadowColor: '#000', 
+    textShadowOffset: { width: 1, height: 1 }, 
+    textShadowRadius: 3,
+    backgroundColor: colors.lightGray,
+  },
   continueContainer: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 10,
+    backgroundColor: colors.lightGray,
   },
   
   mainMenuContainer: {
@@ -63,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff', // Change to a desired background color
 },
   title: {
-    fontSize: 36, // Larger title size
+    fontSize: 70, // Larger title size
     fontWeight: 'bold',
     marginBottom: 20,
     color: colors.black, // Updated to use slateGray
@@ -80,6 +93,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.lightGray, // Updated to use lightGray
     padding: 20,
+    width: '100%',
   },
   letterContainer: {
     width: screenWidth / 4.5,
@@ -164,23 +178,28 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
     marginHorizontal: 5, // Add a little horizontal spacing
-},
+  },
+  studentText: {
+    fontSize: 18,
+    color: colors.white, // Make the text white
+  },
   flatListContainer: {
       paddingBottom: 20, // Adds padding below the FlatList
   },
   scrollableBox: {
-    maxHeight: 300, // Limit height for the box
+    maxHeight: 650, // Limit height for the box
     width: '90%',
     borderWidth: 1,
     borderColor: colors.slateGray,
     borderRadius: 10,
     padding: 10,
-    backgroundColor: colors.slateGray,
+    backgroundColor: colors.pastelBlue,
     shadowColor: '#000', // Shadow color for depth
     shadowOffset: { width: 0, height: 2 }, // Position shadow
     shadowOpacity: 0.3, // Shadow transparency
     shadowRadius: 5, // Spread of shadow
     elevation: 5, // Android shadow effect
+    marginTop: 50,
   },
 });
 

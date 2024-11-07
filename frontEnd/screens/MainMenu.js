@@ -36,12 +36,12 @@ function MainMenuScreen({ navigation }) {
 
   return (
     <View style={styles.mainMenuContainer}>
-      <Text style={styles.title}>Alphabet Learning {'\n'} App</Text>
+      <Text style={styles.title}>Vocably!{"\n"}</Text>
 
       <View style={styles.buttonContainer}>
         <Button
           color={colors.pastelBlue} 
-          title="Start (A)"
+          title="Start"
           onPress={() => navigation.navigate('StartorContinue')}
         />
       </View>
