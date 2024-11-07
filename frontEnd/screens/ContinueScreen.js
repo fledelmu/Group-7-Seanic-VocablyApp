@@ -23,18 +23,10 @@ function ContinueScreen() {
             }
         };
 
-        loadStudents();
+        loadStudents(); // Fetch students on mount
     }, []);
 
-    const handlePress = (item) => {
-        // Pass the entire item to the next screen
-        navigation.navigate('AlphabetTestScreen', { 
-            studentName: item.name,  // Pass name
-            studentScore: item.score, // Pass score
-            letter: item.lastLetter // Pass last letter
-        });
-    };
-
+    // Render each student in the FlatList
     const renderItem = ({ item }) => (
         <Pressable
             style={styles.studentItem}

@@ -122,9 +122,9 @@ function AlphabetDetailScreen({ route, navigation }) {
       ],
       S: [
         { word: 'Sun', image: require('./assets/sun.png') },
-        { word: 'Snake', image: require('./assets/snake.png') },
-        { word: 'Star', image: require('./assets/star.png') },
-        { word: 'Ship', image: require('./assets/ship.png') },
+        { word: 'Snake', image: require('./assets/placeholder.png') },
+        { word: 'Star', image: require('./assets/placeholder.png') },
+        { word: 'Ship', image: require('./assets/placeholder.png') },
       ],
       T: [
         { word: 'Tiger', image: require('./assets/tiger.png') },
@@ -176,15 +176,8 @@ function AlphabetDetailScreen({ route, navigation }) {
 
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
-    
-    
-    const [studentScore, setStudentScore] = useState(score || 0);
 
-    useEffect(() => {
-        if (score > 0) {
-            setStudentScore(score);
-        }
-    }, [score]);
+    const [studentScore, setStudentScore] = useState(0);
 
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {
