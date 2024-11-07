@@ -12,10 +12,10 @@ function TableView() {
         const loadStudents = async () => {
             try {
                 const studentsData = await fetchStudentData();
-                const studentList = studentsData.map(({ name, score, lastLetter }) => ({
+                console.log(studentsData);
+                const studentList = studentsData.map(({ name, score}) => ({
                     name,
                     score,
-                    lastLetter,
                 }));
                 setStudents(studentList);
             } catch (error) {
@@ -32,7 +32,6 @@ function TableView() {
             onPress={() => handlePress(item)}  // Pass the entire item here
         >
             <Text style={styles.studentText}>Name: {item.name}</Text>
-            <Text>Last Letter: {item.lastLetter}</Text>
             <Text>Score: {item.score}</Text>
         </Pressable>
     );
