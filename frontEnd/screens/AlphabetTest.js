@@ -122,9 +122,9 @@ function AlphabetDetailScreen({ route, navigation }) {
       ],
       S: [
         { word: 'Sun', image: require('./assets/sun.png') },
-        { word: 'Snake', image: require('./assets/snake.png') },
-        { word: 'Star', image: require('./assets/star.png') },
-        { word: 'Ship', image: require('./assets/ship.png') },
+        { word: 'Snake', image: require('./assets/snake.jpg') },
+        { word: 'Star', image: require('./assets/star.jpg') },
+        { word: 'Ship', image: require('./assets/ship.jpg') },
       ],
       T: [
         { word: 'Tiger', image: require('./assets/tiger.png') },
@@ -148,7 +148,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         { word: 'Whale', image: require('./assets/whale.png') },
         { word: 'Water', image: require('./assets/water.png') },
         { word: 'Watch', image: require('./assets/watch.png') },
-        { word: 'Window', image: require('./assets/window.png') },
+        { word: 'Window', image: require('./assets/widow.png') },
       ],
       X: [
         { word: 'Xylophone', image: require('./assets/xylophone.png') },
@@ -158,7 +158,7 @@ function AlphabetDetailScreen({ route, navigation }) {
       ],
       Y: [
         { word: 'Yacht', image: require('./assets/yacht.png') },
-        { word: 'Yo-yo', image: require('./assets/yo-yo.png') },
+        { word: 'Yo-yo', image: require('./assets/yoyo.png') },
         { word: 'Yellow', image: require('./assets/yellow.png') },
         { word: 'Yarn', image: require('./assets/yarn.png') },
       ],
@@ -166,7 +166,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         { word: 'Zebra', image: require('./assets/zebra.png') },
         { word: 'Zip', image: require('./assets/zip.png') },
         { word: 'Zoo', image: require('./assets/zoo.png') },
-        { word: 'Zipper', image: require('./assets/zipper.png') },
+        { word: 'Zipper', image: require('./assets/zipp1.png') },
       ],
     };
     //test
