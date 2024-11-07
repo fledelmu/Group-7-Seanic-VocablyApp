@@ -7,8 +7,8 @@ import { insertStudent, fetchStudents } from '../localDB';
 
 // Alphabet Detail screen with swipe feature and check/wrong functionality
 function AlphabetDetailScreen({ route, navigation }) {
-    const { letter: initialLetter, studentName } = route.params;
-    console.log('Navigated to AlphabetDetailScreen with:', { initialLetter, studentName });
+    const { letter: initialLetter, studentName, score } = route.params;
+    console.log('Navigated to AlphabetDetailScreen with:', { initialLetter, studentName, score });
     const student = new Student(studentName);
     //console.log(`Student created: ${student.getName()}`);
     const wordImageMap = {
@@ -93,14 +93,14 @@ function AlphabetDetailScreen({ route, navigation }) {
       N: [
         { word: 'Nest', image: require('./assets/nest.png') },
         { word: 'Nose', image: require('./assets/nose.png') },
-        { word: 'Nut', image: require('./assets/nut.png') },
+        { word: 'Nut', image: require('./assets/nuts.png') },
         { word: 'Net', image: require('./assets/net.png') },
       ],
       O: [
         { word: 'Orange', image: require('./assets/orange.png') },
         { word: 'Owl', image: require('./assets/owl.png') },
         { word: 'Ocean', image: require('./assets/ocean.png') },
-        { word: 'Octopus', image: require('./assets/octupos.png') },
+        { word: 'Octopus', image: require('./assets/octopus.png') },
       ],
       P: [
         { word: 'Penguin', image: require('./assets/penguin.png') },
@@ -117,14 +117,14 @@ function AlphabetDetailScreen({ route, navigation }) {
       R: [
         { word: 'Rabbit', image: require('./assets/rabbit.png') },
         { word: 'Rainbow', image: require('./assets/rainbow.png') },
-        { word: 'Robot', image: require('./assets/robot.png') },
+        { word: 'Robot', image: require('./assets/ROBOT.png') },
         { word: 'Ring', image: require('./assets/ring.png') },
       ],
       S: [
         { word: 'Sun', image: require('./assets/sun.png') },
-        { word: 'Snake', image: require('./assets/snake.png') },
-        { word: 'Star', image: require('./assets/star.png') },
-        { word: 'Ship', image: require('./assets/ship.png') },
+        { word: 'Snake', image: require('./assets/snake.jpg') },
+        { word: 'Star', image: require('./assets/star.jpg') },
+        { word: 'Ship', image: require('./assets/ship.jpg') },
       ],
       T: [
         { word: 'Tiger', image: require('./assets/tiger.png') },
@@ -148,7 +148,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         { word: 'Whale', image: require('./assets/whale.png') },
         { word: 'Water', image: require('./assets/water.png') },
         { word: 'Watch', image: require('./assets/watch.png') },
-        { word: 'Window', image: require('./assets/window.png') },
+        { word: 'Window', image: require('./assets/widow.png') },
       ],
       X: [
         { word: 'Xylophone', image: require('./assets/xylophone.png') },
@@ -158,7 +158,7 @@ function AlphabetDetailScreen({ route, navigation }) {
       ],
       Y: [
         { word: 'Yacht', image: require('./assets/yacht.png') },
-        { word: 'Yo-yo', image: require('./assets/yo-yo.png') },
+        { word: 'Yo-yo', image: require('./assets/yoyo.png') },
         { word: 'Yellow', image: require('./assets/yellow.png') },
         { word: 'Yarn', image: require('./assets/yarn.png') },
       ],
@@ -166,7 +166,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         { word: 'Zebra', image: require('./assets/zebra.png') },
         { word: 'Zip', image: require('./assets/zip.png') },
         { word: 'Zoo', image: require('./assets/zoo.png') },
-        { word: 'Zipper', image: require('./assets/zipper.png') },
+        { word: 'Zipper', image: require('./assets/zipp1.png') },
       ],
     };
     //test
@@ -177,7 +177,14 @@ function AlphabetDetailScreen({ route, navigation }) {
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
 
-    const [studentScore, setStudentScore] = useState(0);
+    const [studentScore, setStudentScore] = useState(score || 0);
+
+    useEffect(() => {
+        if (score > 0) {
+            setStudentScore(score);
+        }
+    }, [score]);
+    
 
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {
