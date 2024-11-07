@@ -209,7 +209,7 @@ function AlphabetViewScreen({ route, navigation }) {
       { text: "OK", onPress: () => navigation.navigate("MainMenu") },
     ]);
   };
-
+  
   return (
     <View style={styles.detailContainer}>
       <View style={styles.topCenterLetter}>
