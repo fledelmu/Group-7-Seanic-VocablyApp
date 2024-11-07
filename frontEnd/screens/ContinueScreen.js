@@ -41,14 +41,14 @@ function ContinueScreen() {
             onPress={() => handlePress(item)}  // Pass the entire item here
         >
             <Text style={styles.studentText}>Name: {item.name}</Text>
-            <Text>Last Letter: {item.lastLetter}</Text>
-            <Text>Score: {item.score}</Text>
+            <Text style={styles.studentText}>Last Letter: {item.lastLetter}</Text>
+            <Text style={styles.studentText}>Score: {item.score}</Text>
         </Pressable>
     );
 
     return (
         <View style={styles.continueContainer}>
-            <Text style={styles.title}>Students List</Text>
+            <Text style={styles.title}>Who's playing?</Text>
             <View style={styles.scrollableBox}>
                 <FlatList
                     data={students}

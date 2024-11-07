@@ -5,8 +5,8 @@ import {styles, colors} from './styles'
 function StartingScreen({ navigation }) {
   return (
     <View style={styles.startingScreenContainer}>
-      <Text style={styles.title}>Welcome to the Alphabet Learning App!</Text>
-      <Text style={styles.instruction}>Get ready to learn your letters.</Text>
+      <Text style={styles.title}>Welcome to Vocably!</Text>
+      <Text style={styles.instruction}>Ready to learn your letters?</Text>
       <View style={styles.buttonContainer}>
         <Button
           style={styles.button}

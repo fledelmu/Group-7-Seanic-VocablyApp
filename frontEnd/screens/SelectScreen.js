@@ -9,6 +9,11 @@ function HomeScreen({ navigation }) {
     return (
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.container}>
+          <Text style={styles.previewTitle}>Learn your alphabets!</Text>
+        </View>
+        
+        <View style={styles.container}>
+        
           {alphabet.map((letter) => (
             <View key={letter} style={styles.letterContainer}>
               <Text
