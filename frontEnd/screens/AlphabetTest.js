@@ -22,7 +22,7 @@ function AlphabetDetailScreen({ route, navigation }) {
         { word: 'Banana', image: require('./assets/banana.png') },
         { word: 'Bear', image: require('./assets/bear.png') },
         { word: 'Bee', image: require('./assets/bee.png') },
-        { word: 'Bird', image: require('./assets/bird.png') },
+        { word: 'Bird', image: require('./assets/bird.jpg') },
       ],
       C: [
         { word: 'Cat', image: require('./assets/cat.png') },
