@@ -253,7 +253,7 @@ function AlphabetDetailScreen({ route, navigation }) {
                 .then(result => {
                   console.log('Student inserted successfully:', result);
                   fetchStudents();
-                  navigation.navigate('MainMenu', { saveData: true });
+                  navigation.navigate("MainMenu");
                 })
                 .catch(error => {
                   console.error('Error inserting student:', error);

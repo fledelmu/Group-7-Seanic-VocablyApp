@@ -5,18 +5,12 @@ import { styles, colors } from './styles';
 import { apiFetchStudent } from '../localDB';
 import { postStudentData } from '../api';
 
-function MainMenuScreen({ navigation, route }) {
+function MainMenuScreen({ navigation }) {
   const isFocused = useIsFocused();
-  const { saveData } = route.params || {};
+
   
   useEffect(() => {
     const postData = async () => {
-      
-      if (!saveData) {
-        console.log('Skipping data synchronization because saveData is not true.');
-        return; // Skip synchronization if saveData is not true
-      }
-
       try {
         const students = await apiFetchStudent();
      
