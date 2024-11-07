@@ -7,8 +7,8 @@ import { insertStudent, fetchStudents } from '../localDB';
 
 // Alphabet Detail screen with swipe feature and check/wrong functionality
 function AlphabetDetailScreen({ route, navigation }) {
-    const { letter: initialLetter, studentName } = route.params;
-    console.log('Navigated to AlphabetDetailScreen with:', { initialLetter, studentName });
+    const { letter: initialLetter, studentName, score } = route.params;
+    console.log('Navigated to AlphabetDetailScreen with:', { initialLetter, studentName, score });
     const student = new Student(studentName);
     //console.log(`Student created: ${student.getName()}`);
     const wordImageMap = {
@@ -177,7 +177,14 @@ function AlphabetDetailScreen({ route, navigation }) {
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
 
-    const [studentScore, setStudentScore] = useState(0);
+    const [studentScore, setStudentScore] = useState(score || 0);
+
+    useEffect(() => {
+        if (score > 0) {
+            setStudentScore(score);
+        }
+    }, [score]);
+    
 
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {
