@@ -10,7 +10,7 @@ function AlphabetDetailScreen({ route, navigation }) {
     const { letter: initialLetter, studentName, score } = route.params;
     console.log('Navigated to AlphabetDetailScreen with:', { initialLetter, studentName, score });
     const student = new Student(studentName);
-    //console.log(`Student created: ${student.getName()}`);
+    //console.log(Student created: ${student.getName()});
     const wordImageMap = {
       A: [
         { word: 'Apple', image: require('./assets/apple.png') },
@@ -122,9 +122,9 @@ function AlphabetDetailScreen({ route, navigation }) {
       ],
       S: [
         { word: 'Sun', image: require('./assets/sun.png') },
-        { word: 'Snake', image: require('./assets/snake.jpg') },
-        { word: 'Star', image: require('./assets/star.jpg') },
-        { word: 'Ship', image: require('./assets/ship.jpg') },
+        { word: 'Snake', image: require('./assets/placeholder.png') },
+        { word: 'Star', image: require('./assets/placeholder.png') },
+        { word: 'Ship', image: require('./assets/placeholder.png') },
       ],
       T: [
         { word: 'Tiger', image: require('./assets/tiger.png') },
@@ -177,14 +177,7 @@ function AlphabetDetailScreen({ route, navigation }) {
     const words = wordImageMap[initialLetter] || [];
     const currentWord = words[wordIndex];
 
-    const [studentScore, setStudentScore] = useState(score || 0);
-
-    useEffect(() => {
-        if (score > 0) {
-            setStudentScore(score);
-        }
-    }, [score]);
-    
+    const [studentScore, setStudentScore] = useState(0);
 
     const handleCheck = () => {
       if (wordIndex < words.length - 1) {
